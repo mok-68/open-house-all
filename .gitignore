@@ -1,2 +1,4 @@
+*.exe
+.dist/
+.vercel/
 .DS_Store
-.vercel

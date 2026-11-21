@@ -1,357 +1,468 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>รวมลิงก์รูปภาพ | Open House วิทยาการสารสนเทศ มมส</title>
-<meta name="description" content="รวมลิงก์อัลบั้มรูปภาพงาน Open House คณะวิทยาการสารสนเทศ มหาวิทยาลัยมหาสารคาม" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-<style>
-  :root {
-    /* ===== เปลี่ยนรูปภาพหัวเว็บ/พื้นหลังตรงนี้ ===== */
-    --photo: url("background1.jpg");
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open House — รวมลิงก์รูปภาพ</title>
+  <meta name="description" content="รวมลิงก์รูปภาพกิจกรรม Open House คณะวิทยาการสารสนเทศ มหาวิทยาลัยมหาสารคาม เปิดดูได้จากลิงก์เดียว">
+  <meta name="theme-color" content="#050b16">
+  <link rel="icon" href="icon1.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    /* =========================================================
+       เปลี่ยนรูปตกแต่งของเว็บได้ที่ตัวแปรด้านล่างนี้
+       ========================================================= */
+    :root {
+      --photo: url("background1.jpg");   /* ภาพพื้นหลังทั้งหน้า */
+      --navy: #050b16;
+      --navy-2: #081426;
+      --card: #0a1728;
+      --card-hover: #0d1e34;
+      --line: rgba(120, 178, 255, 0.18);
+      --line-strong: rgba(120, 178, 255, 0.38);
+      --text: #e9f2ff;
+      --text-dim: #93a9c4;
+      --blue: #3b82e0;
+      --blue-light: #8dbcff;
+      --radius: 22px;
+      --font-body: "Kanit", "Leelawadee UI", "Segoe UI", Tahoma, sans-serif;
+      --font-display: "Space Grotesk", "Kanit", sans-serif;
+    }
 
-    --bg: #050b16;
-    --bg-soft: #07101f;
-    --card: #0a1728;
-    --card-hi: #0f2138;
-    --line: rgba(141, 188, 255, 0.16);
-    --text: #eaf2ff;
-    --muted: #9ab0cc;
-    --accent: #3b82e0;
-    --accent-2: #8dbcff;
-    --shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
-    --radius: 18px;
-  }
+    *, *::before, *::after { box-sizing: border-box; }
 
-  * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
-  html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: var(--navy);
+      background-image:
+        linear-gradient(180deg, rgba(5, 11, 22, 0.72) 0%, rgba(5, 11, 22, 0.92) 46%, var(--navy) 100%),
+        var(--photo);
+      background-position: center top;
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: "Kanit", system-ui, -apple-system, "Segoe UI", sans-serif;
-    font-weight: 300;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-  }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
 
-  a { color: var(--accent-2); }
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin-inline: auto;
+    }
 
-  .wrap {
-    width: min(1120px, 100% - 2.5rem);
-    margin-inline: auto;
-  }
+    /* ---------- banner ---------- */
 
-  /* ================= HERO ================= */
-  .hero {
-    position: relative;
-    isolation: isolate;
-    min-height: clamp(340px, 52vh, 520px);
-    display: flex;
-    align-items: flex-end;
-    padding: clamp(2.5rem, 8vw, 5rem) 0 clamp(2rem, 5vw, 3.5rem);
-    background-color: var(--bg-soft);
-    background-image:
-      linear-gradient(180deg, rgba(5, 11, 22, 0.35) 0%, rgba(5, 11, 22, 0.72) 45%, var(--bg) 100%),
-      var(--photo);
-    background-size: cover, cover;
-    background-position: center, center 35%;
-    background-repeat: no-repeat, no-repeat;
-  }
+    .banner {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      min-height: clamp(380px, 58vh, 520px);
+      padding: 3rem 0 2.6rem;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
 
-  .hero::after {
-    content: "";
-    position: absolute;
-    inset: auto 0 0 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    opacity: 0.5;
-  }
+    .banner-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+      filter: saturate(1.05) contrast(1.02);
+      z-index: -2;
+    }
 
-  .hero-inner { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
+    .banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse at 78% 20%, rgba(59, 130, 224, 0.4), transparent 55%),
+        linear-gradient(90deg, rgba(4, 9, 18, 0.96) 0%, rgba(4, 9, 18, 0.82) 45%, rgba(4, 9, 18, 0.35) 100%),
+        linear-gradient(0deg, var(--navy) 0%, rgba(4, 9, 18, 0) 70%);
+    }
 
-  .chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.1rem; }
+    .banner-inner { position: relative; }
 
-  .chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    padding: 0.32rem 0.85rem;
-    border-radius: 999px;
-    font-size: 0.8rem;
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    color: var(--accent-2);
-    background: rgba(59, 130, 224, 0.14);
-    border: 1px solid var(--line);
-    backdrop-filter: blur(6px);
-  }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.34rem 0.8rem;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(5, 11, 22, 0.55);
+      color: var(--blue-light);
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
 
-  .chip--ghost { color: var(--muted); background: rgba(10, 23, 40, 0.55); }
+    .chip::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 4px rgba(59, 130, 224, 0.2);
+    }
 
-  h1 {
-    margin: 0 0 0.55rem;
-    font-size: clamp(2.1rem, 6.2vw, 3.9rem);
-    font-weight: 700;
-    line-height: 1.12;
-    letter-spacing: -0.02em;
-    text-shadow: 0 4px 26px rgba(0, 0, 0, 0.6);
-  }
+    .banner h1 {
+      margin: 1rem 0 0.6rem;
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 7vw, 4.6rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 0.98;
+    }
 
-  h1 .accent {
-    background: linear-gradient(100deg, var(--accent-2), #ffffff 70%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
+    .banner h1 span {
+      color: transparent;
+      -webkit-text-stroke: 2px var(--blue-light);
+    }
 
-  .hero p.sub {
-    margin: 0;
-    max-width: 46ch;
-    color: #c3d3e8;
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
-  }
+    .banner p {
+      max-width: 56ch;
+      margin: 0;
+      color: #c7d8ee;
+      font-size: clamp(0.98rem, 1.6vw, 1.1rem);
+      line-height: 1.75;
+    }
 
-  /* ================= POLAROID / CARD GRID ================= */
-  main { padding: clamp(2rem, 5vw, 3.5rem) 0 1rem; }
+    /* ---------- link list ---------- */
 
-  .section-head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 0.5rem 1rem;
-    margin-bottom: 1.4rem;
-  }
+    main { padding: clamp(2.2rem, 5vw, 3.6rem) 0 4rem; }
 
-  .section-head h2 {
-    margin: 0;
-    font-size: clamp(1.15rem, 2.6vw, 1.45rem);
-    font-weight: 600;
-  }
+    .list-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.6rem;
+    }
 
-  .section-head .count { color: var(--muted); font-size: 0.9rem; }
+    .list-head h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 3vw, 1.9rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
 
-  .link-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
-    gap: 1.25rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
+    .list-head h2 em {
+      color: var(--blue-light);
+      font-style: normal;
+    }
 
-  .link-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    color: inherit;
-    background: linear-gradient(160deg, var(--card-hi), var(--card) 55%);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
-  }
+    .list-head p {
+      margin: 0;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
 
-  .link-card:hover,
-  .link-card:focus-visible {
-    transform: translateY(-6px);
-    border-color: rgba(141, 188, 255, 0.45);
-    box-shadow: 0 26px 60px rgba(8, 26, 51, 0.75);
-    outline: none;
-  }
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.1rem;
+    }
 
-  .link-card .cover {
-    position: relative;
-    aspect-ratio: 16 / 10;
-    background-color: var(--card-hi);
-    background-image:
-      linear-gradient(180deg, rgba(5, 11, 22, 0.1), rgba(5, 11, 22, 0.85)),
-      var(--photo);
-    background-size: cover, cover;
-    background-position: center, center 30%;
-  }
+    .link-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      color: inherit;
+      text-decoration: none;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease,
+        box-shadow 0.25s ease;
+    }
 
-  .link-card .cover::after {
-    content: "อัลบั้ม";
-    position: absolute;
-    top: 0.7rem;
-    left: 0.7rem;
-    padding: 0.15rem 0.6rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.06em;
-    color: var(--text);
-    background: rgba(5, 11, 22, 0.6);
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    backdrop-filter: blur(4px);
-  }
+    .link-card:hover,
+    .link-card:focus-visible {
+      outline: none;
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+      background: var(--card-hover);
+      box-shadow: 0 22px 46px rgba(2, 8, 18, 0.6), 0 0 0 1px rgba(120, 178, 255, 0.16);
+    }
 
-  .link-card .body { padding: 1.05rem 1.15rem 1.2rem; display: flex; flex-direction: column; gap: 0.35rem; flex: 1; }
+    .card-cover {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0b1c31, #071322);
+    }
 
-  .link-card h3 { margin: 0; font-size: 1.05rem; font-weight: 600; }
+    .card-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
 
-  .link-card .meta { margin: 0; color: var(--muted); font-size: 0.87rem; }
+    .link-card:hover .card-cover img { transform: scale(1.04); }
 
-  .link-card .go {
-    margin-top: auto;
-    padding-top: 0.85rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--accent-2);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
+    .card-cover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(5, 11, 22, 0) 40%, rgba(5, 11, 22, 0.7) 100%);
+    }
 
-  .link-card .go span { transition: transform 0.25s ease; }
-  .link-card:hover .go span { transform: translateX(4px); }
+    .card-album {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 1;
+      padding: 0.26rem 0.66rem;
+      border: 1px solid rgba(140, 188, 255, 0.32);
+      border-radius: 999px;
+      background: rgba(4, 10, 20, 0.72);
+      color: var(--blue-light);
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
 
-  /* ================= HOW TO EDIT ================= */
-  .howto {
-    margin: 2.5rem 0 1rem;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background: linear-gradient(160deg, rgba(15, 33, 56, 0.6), rgba(7, 16, 31, 0.9));
-    padding: 0.2rem 1.2rem;
-  }
+    .card-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding: 1rem 1.1rem 1.15rem;
+    }
 
-  .howto summary {
-    cursor: pointer;
-    padding: 1rem 0;
-    font-weight: 500;
-    font-size: 0.98rem;
-    color: var(--accent-2);
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
+    .card-body h3 {
+      margin: 0;
+      font-size: 1.08rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
 
-  .howto summary::-webkit-details-marker { display: none; }
-  .howto summary::before { content: "＋"; font-size: 1rem; }
-  .howto[open] summary::before { content: "－"; }
+    .card-body p {
+      margin: 0;
+      color: var(--text-dim);
+      font-size: 0.87rem;
+      line-height: 1.6;
+    }
 
-  .howto ol { margin: 0 0 1.1rem; padding-left: 1.25rem; color: #c3d3e8; font-size: 0.92rem; }
-  .howto li { margin-bottom: 0.5rem; }
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: auto;
+      padding-top: 0.85rem;
+      color: var(--blue-light);
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
 
-  .howto code {
-    font-family: "Space Grotesk", ui-monospace, Consolas, monospace;
-    font-size: 0.85em;
-    padding: 0.1rem 0.4rem;
-    border-radius: 6px;
-    background: rgba(59, 130, 224, 0.16);
-    color: #cfe1ff;
-  }
+    .card-cta svg { width: 15px; height: 15px; }
 
-  footer {
-    margin-top: 2.5rem;
-    padding: 1.6rem 0 2.4rem;
-    border-top: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 0.85rem;
-    text-align: center;
-  }
+    .link-card:hover .card-cta { color: #fff; }
 
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    * { transition: none !important; }
-    .link-card:hover { transform: none; }
-  }
+    /* ---------- how to edit ---------- */
 
-  @media (max-width: 520px) {
-    .wrap, .hero-inner { width: min(1120px, 100% - 1.75rem); }
-    .link-grid { gap: 1rem; }
-  }
-</style>
+    .howto {
+      margin-top: 2.2rem;
+      padding: 1.1rem 1.3rem;
+      border: 1px dashed var(--line-strong);
+      border-radius: 16px;
+      background: rgba(8, 20, 38, 0.6);
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    .howto summary {
+      color: var(--text);
+      font-weight: 500;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .howto summary::before { content: "＋ "; color: var(--blue-light); }
+
+    .howto[open] summary::before { content: "− "; }
+
+    .howto p { margin: 0.7rem 0 0; line-height: 1.8; }
+
+    .howto code {
+      padding: 0.08rem 0.4rem;
+      border-radius: 6px;
+      background: rgba(120, 178, 255, 0.14);
+      color: var(--blue-light);
+      font-size: 0.86em;
+    }
+
+    /* ---------- footer ---------- */
+
+    .site-footer {
+      padding: 1.6rem 0 2rem;
+      border-top: 1px solid var(--line);
+      color: var(--text-dim);
+      font-size: 0.82rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: var(--text);
+      text-decoration: none;
+      font-family: var(--font-display);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .footer-brand img {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      object-fit: cover;
+    }
+
+    .site-footer a:hover { color: var(--blue-light); }
+
+    @media (max-width: 600px) {
+      .banner { min-height: 340px; padding: 2.2rem 0 2rem; }
+      .link-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .link-card, .card-cover img { transition: none; }
+    }
+  </style>
 </head>
 <body>
-
-  <header class="hero">
-    <div class="hero-inner">
-      <div class="chip-row">
-        <span class="chip">Open House 2026</span>
-        <span class="chip chip--ghost">คณะวิทยาการสารสนเทศ · มมส</span>
-      </div>
-      <h1>รวม<span class="accent">ลิงก์รูปภาพ</span></h1>
-      <p class="sub">รวมอัลบั้มภาพบรรยากาศงาน Open House คณะวิทยาการสารสนเทศ มหาวิทยาลัยมหาสารคาม — กดการ์ดเพื่อเปิดอัลบั้มได้เลย</p>
+  <header class="banner">
+    <img class="banner-img" src="background1.jpg" alt="อาคารคณะวิทยาการสารสนเทศ มหาวิทยาลัยมหาสารคาม">
+    <div class="banner-inner container">
+      <span class="chip">MSU Open House · Informatics</span>
+      <h1>รวมลิงก์<span>รูปภาพ</span></h1>
+      <p>
+        รูปทุกใบของงาน Open House อยู่ที่นี่ — กดการ์ดเพื่อเปิดอัลบั้มใน Google Drive
+        หรือลิงก์ที่เก็บรูปไว้ ไม่ต้องค้นหาให้ยุ่งยาก
+      </p>
     </div>
   </header>
 
-  <main class="wrap">
+  <main>
+    <div class="container">
+      <div class="list-head">
+        <h2>ลิงก์ทั้งหมด <em id="linkCount">3</em></h2>
+        <p>แก้ไข / เพิ่ม / ลบการ์ดได้ในไฟล์ index.html</p>
+      </div>
 
-    <div class="section-head">
-      <h2>อัลบั้มรูปภาพ</h2>
-      <span class="count"><span id="linkCount">0</span> อัลบั้ม</span>
+      <!-- ============================================================
+           เพิ่มลิงก์ใหม่: คัดลอกการ์ดทั้งก้อน (ตั้งแต่ <a class="link-card"
+           ถึง </a>) ไปวางต่อจากก้อนสุดท้าย แล้วแก้ข้อความกับ href
+           ============================================================ -->
+      <section class="link-grid" id="linkGrid">
+
+        <!-- การ์ดที่ 1 -->
+        <a class="link-card" href="https://drive.msu.ac.th/d/s/1Amr0L5T9XFnQPMf3xWjVgR2l713b2CJ/pwjTLtYd_Vm0sFNCWGUoZX_GiOLFAoIr--rig-UHTrA0" target="_blank" rel="noopener noreferrer">
+          <div class="card-cover">
+            <img src="background1.jpg" alt="">
+            <span class="card-album">บรรยากาศ</span>
+          </div>
+          <div class="card-body">
+            <h3>บรรยากาศมหาวิทยาลัยและอาคารเรียน</h3>
+            <p>ภาพอาคารคณะ ลานกิจกรรม และบรรยากาศโดยรอบในวันงาน</p>
+            
+            <span class="card-cta">
+              เปิดอัลบั้ม
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- การ์ดที่ 2 -->
+        <a class="link-card" href="https://photos.app.goo.gl/cvngcfzAzaFRejUa6" target="_blank" rel="noopener noreferrer">
+          <div class="card-cover">
+            <img src="background1.jpg" alt="">
+            <span class="card-album">กิจกรรม</span>
+          </div>
+          <div class="card-body">
+            <h3>กิจกรรมฐานเรียนรู้</h3>
+            <p>ภาพน้อง ๆ และพี่ ๆ ร่วมกิจกรรมฐานต่าง ๆ ภายในงาน Open House</p>
+            <span class="card-cta">
+              เปิดอัลบั้ม
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </span>
+          </div>
+        </a>
+
+    
+
+      </section>
+
+      <details class="howto">
+        <summary>วิธีแก้ไขลิงก์และรูปภาพ</summary>
+        <p>
+          <strong>เพิ่มลิงก์:</strong> เปิดไฟล์ <code>index.html</code> ด้วย Notepad หรือ VS Code
+          แล้วคัดลอกบล็อก <code>&lt;a class="link-card" ...&gt; ... &lt;/a&gt;</code> ไปวางต่อจากของเดิม
+          จากนั้นแก้ <code>href="..."</code> เป็นลิงก์ Google Drive (หรือเว็บอื่น) ที่ต้องการ
+        </p>
+        <p>
+          <strong>เปลี่ยนรูปปก:</strong> เอาไฟล์รูปมาวางไว้โฟลเดอร์เดียวกับ <code>index.html</code>
+          แล้วแก้ <code>src="background1.jpg"</code> ในการ์ดนั้นเป็นชื่อไฟล์ใหม่
+        </p>
+        <p>
+          <strong>เปลี่ยนภาพพื้นหลังทั้งหน้า:</strong> แก้บรรทัด <code>--photo: url("background1.jpg");</code>
+          ในส่วน <code>&lt;style&gt;</code> ด้านบนของไฟล์
+        </p>
+        <p>
+          <strong>สำคัญ:</strong> ต้องตั้งค่าแชร์ใน Google Drive เป็น
+          “ทุกคนที่มีลิงก์สามารถดูได้” คนอื่นจึงจะเปิดดูรูปได้
+        </p>
+      </details>
     </div>
-
-    <!-- ============================================================
-         เพิ่มลิงก์ใหม่: คัดลอกบล็อก <li class="link-card"> ทั้งก้อน
-         แล้วแก้ href ให้เป็นลิงก์ Google Drive / อัลบั้มของคุณ
-         ============================================================ -->
-    <ul class="link-grid" id="linkGrid">
-
-      <li>
-        <a class="link-card" href="https://drive.msu.ac.th/d/s/1Amr0L5T9XFnQPMf3xWjVgR2l713b2CJ/pwjTLtYd_Vm0sFNCWGUoZX_GiOLFAoIr--rig-UHTrA0" target="_blank" rel="noopener">
-          <div class="cover"></div>
-          <div class="body">
-            <h3>ภาพบรรยากาศงาน</h3>
-            <p class="meta">ภาพรวมบูธนิทรรศการและกิจกรรมภายในงาน</p>
-            <span class="go">เปิดอัลบั้ม <span>→</span></span>
-          </div>
-        </a>
-      </li>
-
-      <li>
-        <a class="link-card" href="https://drive.msu.ac.th/d/s/1Amr0L5T9XFnQPMf3xWjVgR2l713b2CJ/pwjTLtYd_Vm0sFNCWGUoZX_GiOLFAoIr--rig-UHTrA0" target="_blank" rel="noopener">
-          <div class="cover"></div>
-          <div class="body">
-            <h3>ผลงานนักศึกษา</h3>
-            <p class="meta">โครงงานและผลงานที่จัดแสดงในงาน Open House</p>
-            <span class="go">เปิดอัลบั้ม <span>→</span></span>
-          </div>
-        </a>
-      </li>
-
-      <li>
-        <a class="link-card" href="https://drive.google.com/drive/folders/1OpenHousePhotoAlbum03" target="_blank" rel="noopener">
-          <div class="cover"></div>
-          <div class="body">
-            <h3>กิจกรรมเวทีกลาง</h3>
-            <p class="meta">การแสดง การประกวด และพิธีบนเวทีกลาง</p>
-            <span class="go">เปิดอัลบั้ม <span>→</span></span>
-          </div>
-        </a>
-      </li>
-
-    </ul>
-
-    <details class="howto">
-      <summary>วิธีแก้ไขลิงก์และรูปภาพ (แก้ในไฟล์ index.html)</summary>
-      <ol>
-        <li>เปิดไฟล์ <code>index.html</code> ด้วย Notepad หรือ VS Code</li>
-        <li>หา <code>href="..."</code> ในการ์ดที่ต้องการ แล้ววางลิงก์ Google Drive ของคุณแทน (ต้องตั้งค่าแชร์เป็น “ทุกคนที่มีลิงก์”)</li>
-        <li>ชื่ออัลบั้มแก้ที่ <code>&lt;h3&gt;</code> และคำอธิบายแก้ที่ <code>&lt;p class="meta"&gt;</code></li>
-        <li>เปลี่ยนรูปพื้นหลังทั้งหน้าและปกการ์ด: วางไฟล์ชื่อ <code>background1.jpg</code> ไว้ข้าง ๆ <code>index.html</code> (หรือแก้ค่า <code>--photo</code> ใน <code>:root</code>)</li>
-      </ol>
-    </details>
-
   </main>
 
-  <footer class="wrap">
-    <p>© <span id="year">2026</span> คณะวิทยาการสารสนเทศ มหาวิทยาลัยมหาสารคาม</p>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="footer-brand" href="#">
+        <img src="icon1.png" alt="ตราคณะวิทยาการสารสนเทศ">
+        OPEN HOUSE · MSU
+      </a>
+      <span>© <span id="year">2026</span> คณะวิทยาการสารสนเทศ มหาวิทยาลัยมหาสารคาม</span>
+    </div>
   </footer>
 
   <script>
-    document.getElementById('linkCount').textContent = document.querySelectorAll('#linkGrid .link-card').length;
-    document.getElementById('year').textContent = new Date().getFullYear();
+    /* นับจำนวนการ์ดและปีอัตโนมัติ — ไม่ต้องแก้เมื่อเพิ่มลิงก์ */
+    document.getElementById("linkCount").textContent =
+      document.querySelectorAll("#linkGrid .link-card").length;
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
