@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>รวมลิงก์รูปภาพ | Open House วิทยาการสารสนเทศ มมส</title>
+<meta name="description" content="รวมลิงก์อัลบั้มรูปภาพงาน Open House คณะวิทยาการสารสนเทศ มหาวิทยาลัยมหาสารคาม" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    /* ===== เปลี่ยนรูปภาพหัวเว็บ/พื้นหลังตรงนี้ ===== */
+    --photo: url("background1.jpg");
+
+    --bg: #050b16;
+    --bg-soft: #07101f;
+    --card: #0a1728;
+    --card-hi: #0f2138;
+    --line: rgba(141, 188, 255, 0.16);
+    --text: #eaf2ff;
+    --muted: #9ab0cc;
+    --accent: #3b82e0;
+    --accent-2: #8dbcff;
+    --shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+    --radius: 18px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Kanit", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent-2); }
+
+  .wrap {
+    width: min(1120px, 100% - 2.5rem);
+    margin-inline: auto;
+  }
+
+  /* ================= HERO ================= */
+  .hero {
+    position: relative;
+    isolation: isolate;
+    min-height: clamp(340px, 52vh, 520px);
+    display: flex;
+    align-items: flex-end;
+    padding: clamp(2.5rem, 8vw, 5rem) 0 clamp(2rem, 5vw, 3.5rem);
+    background-color: var(--bg-soft);
+    background-image:
+      linear-gradient(180deg, rgba(5, 11, 22, 0.35) 0%, rgba(5, 11, 22, 0.72) 45%, var(--bg) 100%),
+      var(--photo);
+    background-size: cover, cover;
+    background-position: center, center 35%;
+    background-repeat: no-repeat, no-repeat;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.5;
+  }
+
+  .hero-inner { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
+
+  .chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.1rem; }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.32rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--accent-2);
+    background: rgba(59, 130, 224, 0.14);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(6px);
+  }
+
+  .chip--ghost { color: var(--muted); background: rgba(10, 23, 40, 0.55); }
+
+  h1 {
+    margin: 0 0 0.55rem;
+    font-size: clamp(2.1rem, 6.2vw, 3.9rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 26px rgba(0, 0, 0, 0.6);
+  }
+
+  h1 .accent {
+    background: linear-gradient(100deg, var(--accent-2), #ffffff 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero p.sub {
+    margin: 0;
+    max-width: 46ch;
+    color: #c3d3e8;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+  }
+
+  /* ================= POLAROID / CARD GRID ================= */
+  main { padding: clamp(2rem, 5vw, 3.5rem) 0 1rem; }
+
+  .section-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .section-head h2 {
+    margin: 0;
+    font-size: clamp(1.15rem, 2.6vw, 1.45rem);
+    font-weight: 600;
+  }
+
+  .section-head .count { color: var(--muted); font-size: 0.9rem; }
+
+  .link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .link-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    background: linear-gradient(160deg, var(--card-hi), var(--card) 55%);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+  }
+
+  .link-card:hover,
+  .link-card:focus-visible {
+    transform: translateY(-6px);
+    border-color: rgba(141, 188, 255, 0.45);
+    box-shadow: 0 26px 60px rgba(8, 26, 51, 0.75);
+    outline: none;
+  }
+
+  .link-card .cover {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background-color: var(--card-hi);
+    background-image:
+      linear-gradient(180deg, rgba(5, 11, 22, 0.1), rgba(5, 11, 22, 0.85)),
+      var(--photo);
+    background-size: cover, cover;
+    background-position: center, center 30%;
+  }
+
+  .link-card .cover::after {
+    content: "อัลบั้ม";
+    position: absolute;
+    top: 0.7rem;
+    left: 0.7rem;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--text);
+    background: rgba(5, 11, 22, 0.6);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+  }
+
+  .link-card .body { padding: 1.05rem 1.15rem 1.2rem; display: flex; flex-direction: column; gap: 0.35rem; flex: 1; }
+
+  .link-card h3 { margin: 0; font-size: 1.05rem; font-weight: 600; }
+
+  .link-card .meta { margin: 0; color: var(--muted); font-size: 0.87rem; }
+
+  .link-card .go {
+    margin-top: auto;
+    padding-top: 0.85rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--accent-2);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .link-card .go span { transition: transform 0.25s ease; }
+  .link-card:hover .go span { transform: translateX(4px); }
+
+  /* ================= HOW TO EDIT ================= */
+  .howto {
+    margin: 2.5rem 0 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: linear-gradient(160deg, rgba(15, 33, 56, 0.6), rgba(7, 16, 31, 0.9));
+    padding: 0.2rem 1.2rem;
+  }
+
+  .howto summary {
+    cursor: pointer;
+    padding: 1rem 0;
+    font-weight: 500;
+    font-size: 0.98rem;
+    color: var(--accent-2);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .howto summary::-webkit-details-marker { display: none; }
+  .howto summary::before { content: "＋"; font-size: 1rem; }
+  .howto[open] summary::before { content: "－"; }
+
+  .howto ol { margin: 0 0 1.1rem; padding-left: 1.25rem; color: #c3d3e8; font-size: 0.92rem; }
+  .howto li { margin-bottom: 0.5rem; }
+
+  .howto code {
+    font-family: "Space Grotesk", ui-monospace, Consolas, monospace;
+    font-size: 0.85em;
+    padding: 0.1rem 0.4rem;
+    border-radius: 6px;
+    background: rgba(59, 130, 224, 0.16);
+    color: #cfe1ff;
+  }
+
+  footer {
+    margin-top: 2.5rem;
+    padding: 1.6rem 0 2.4rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+    .link-card:hover { transform: none; }
+  }
+
+  @media (max-width: 520px) {
+    .wrap, .hero-inner { width: min(1120px, 100% - 1.75rem); }
+    .link-grid { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="chip-row">
+        <span class="chip">Open House 2026</span>
+        <span class="chip chip--ghost">คณะวิทยาการสารสนเทศ · มมส</span>
+      </div>
+      <h1>รวม<span class="accent">ลิงก์รูปภาพ</span></h1>
+      <p class="sub">รวมอัลบั้มภาพบรรยากาศงาน Open House คณะวิทยาการสารสนเทศ มหาวิทยาลัยมหาสารคาม — กดการ์ดเพื่อเปิดอัลบั้มได้เลย</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <div class="section-head">
+      <h2>อัลบั้มรูปภาพ</h2>
+      <span class="count"><span id="linkCount">0</span> อัลบั้ม</span>
+    </div>
+
+    <!-- ============================================================
+         เพิ่มลิงก์ใหม่: คัดลอกบล็อก <li class="link-card"> ทั้งก้อน
+         แล้วแก้ href ให้เป็นลิงก์ Google Drive / อัลบั้มของคุณ
+         ============================================================ -->
+    <ul class="link-grid" id="linkGrid">
+
+      <li>
+        <a class="link-card" href="https://drive.google.com/drive/folders/1OpenHousePhotoAlbum01" target="_blank" rel="noopener">
+          <div class="cover"></div>
+          <div class="body">
+            <h3>ภาพบรรยากาศงาน</h3>
+            <p class="meta">ภาพรวมบูธนิทรรศการและกิจกรรมภายในงาน</p>
+            <span class="go">เปิดอัลบั้ม <span>→</span></span>
+          </div>
+        </a>
+      </li>
+
+      <li>
+        <a class="link-card" href="https://drive.google.com/drive/folders/1OpenHousePhotoAlbum02" target="_blank" rel="noopener">
+          <div class="cover"></div>
+          <div class="body">
+            <h3>ผลงานนักศึกษา</h3>
+            <p class="meta">โครงงานและผลงานที่จัดแสดงในงาน Open House</p>
+            <span class="go">เปิดอัลบั้ม <span>→</span></span>
+          </div>
+        </a>
+      </li>
+
+      <li>
+        <a class="link-card" href="https://drive.google.com/drive/folders/1OpenHousePhotoAlbum03" target="_blank" rel="noopener">
+          <div class="cover"></div>
+          <div class="body">
+            <h3>กิจกรรมเวทีกลาง</h3>
+            <p class="meta">การแสดง การประกวด และพิธีบนเวทีกลาง</p>
+            <span class="go">เปิดอัลบั้ม <span>→</span></span>
+          </div>
+        </a>
+      </li>
+
+    </ul>
+
+    <details class="howto">
+      <summary>วิธีแก้ไขลิงก์และรูปภาพ (แก้ในไฟล์ index.html)</summary>
+      <ol>
+        <li>เปิดไฟล์ <code>index.html</code> ด้วย Notepad หรือ VS Code</li>
+        <li>หา <code>href="..."</code> ในการ์ดที่ต้องการ แล้ววางลิงก์ Google Drive ของคุณแทน (ต้องตั้งค่าแชร์เป็น “ทุกคนที่มีลิงก์”)</li>
+        <li>ชื่ออัลบั้มแก้ที่ <code>&lt;h3&gt;</code> และคำอธิบายแก้ที่ <code>&lt;p class="meta"&gt;</code></li>
+        <li>เปลี่ยนรูปพื้นหลังทั้งหน้าและปกการ์ด: วางไฟล์ชื่อ <code>background1.jpg</code> ไว้ข้าง ๆ <code>index.html</code> (หรือแก้ค่า <code>--photo</code> ใน <code>:root</code>)</li>
+      </ol>
+    </details>
+
+  </main>
+
+  <footer class="wrap">
+    <p>© <span id="year">2026</span> คณะวิทยาการสารสนเทศ มหาวิทยาลัยมหาสารคาม</p>
+  </footer>
+
+  <script>
+    document.getElementById('linkCount').textContent = document.querySelectorAll('#linkGrid .link-card').length;
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
